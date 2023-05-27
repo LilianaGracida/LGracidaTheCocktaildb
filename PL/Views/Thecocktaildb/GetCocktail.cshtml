@@ -1,0 +1,57 @@
+﻿@model ML.Cocktail
+@{
+    ViewBag.Title = "GetCocktail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="=col-md-12">
+            <h2>The Cocktail</h2>
+        </div>
+    </div>
+    @using (Html.BeginForm("GetCocktail", "Thecocktaildb", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-4">
+                    @Html.Label("Nombre Cocktail")
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-4">
+                    @Html.Label("Ingrediente")
+                    @Html.TextBoxFor(model => model.Ingrediente, new { @class = "form-control", @id = "txtIngrediente", @autocomplete = "off" })
+                    @Html.ValidationMessageFor(model => model.Ingrediente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+
+                <input type="submit" value="Buscar" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+    <div class="row">
+        @*@foreach (ML.Cocktail cocktail in Model.Productos)
+        {
+            <div class="col mt-3 pt-3">
+                <div class="card text-white bg-dark border-success mb-3 border-4 " style="width: 18rem;">
+                    @if (cocktail.Imagen == null || cocktail.Imagen == "")
+                    {
+                        <img src="~/Images/SIN-IMAGEN.png" class="card-img-top" height="50%" width="100%" />
+                    }
+                    else
+                    {
+                        <img src="data:image/*;base64,@cocktail.Imagen" class="card-img-top" width="80%" height="50%" />
+                    }
+
+                    <div class="card-body">
+                        <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail .Nombre</h5>
+                        <p class="card-text">Ingrediente:@cocktail.Ingrediente </p>
+                    </div>
+                </div>
+            </div>
+       }*@
+    </div>
+
+</div>
