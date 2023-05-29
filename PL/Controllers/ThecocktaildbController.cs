@@ -12,35 +12,35 @@ namespace PL.Controllers
 
         public ActionResult GetCocktail()
         {
-            ML.Result resultLibro = new ML.Result();
-                resultLibro.Objects = new List<Object>();
+            //ML.Result resultLibro = new ML.Result();
+            //    resultLibro.Objects = new List<Object>();
 
-                using (var client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri("https://www.thecocktaildb.com/api/json/");
+            //    using (var client = new HttpClient())
+            //    {
+            //        client.BaseAddress = new Uri("https://www.thecocktaildb.com/api/json/");
 
-                    var responseTask = client.GetAsync("");
-                    responseTask.Wait();
+            //        var responseTask = client.GetAsync("");
+            //        responseTask.Wait();
 
-                    var result = responseTask.Result;
+            //        var result = responseTask.Result;
 
-                    if (result.IsSuccessStatusCode)
-                    {
+            //        if (result.IsSuccessStatusCode)
+            //        {
 
-                        var readTask = result.Content.ReadAsAsync<ML.Result>();
-                        readTask.Wait();
+            //            var readTask = result.Content.ReadAsAsync<ML.Result>();
+            //            readTask.Wait();
 
-                        foreach (var resultItem in readTask.Result.Objects)
-                        {
-                            ML.Cocktail resultItemList = Newtonsoft.Json.JsonConvert.DeserializeObject<ML.Cocktail>(resultItem.ToString());
-                            resultLibro.Objects.Add(resultItemList);
-                        }
+            //            foreach (var resultItem in readTask.Result.Objects)
+            //            {
+            //                ML.Cocktail resultItemList = Newtonsoft.Json.JsonConvert.DeserializeObject<ML.Cocktail>(resultItem.ToString());
+            //                resultLibro.Objects.Add(resultItemList);
+            //            }
 
-                    }
-                }
-                ML.Cocktail cocktail = new ML.Cocktail();
-                cocktail.Productos = resultLibro.Objects;
-                return View(cocktail);//Mandar a llamar a la vista, mostrar la vista(HTML)
+            //        }
+            //    }
+            //    ML.Cocktail cocktail = new ML.Cocktail();
+            //    cocktail.Productos = resultLibro.Objects;
+               return View();//Mandar a llamar a la vista, mostrar la vista(HTML)
         }
         [HttpPost]
         public ActionResult GetCocktail(ML.Cocktail cocktail)
@@ -64,7 +64,7 @@ namespace PL.Controllers
                     readTask.Wait();
 
 
-                    foreach (var resultItem in readTask.Result.)
+                    foreach (var resultItem in readTask.Result)
                     {
                         ML.Cocktail resultItemList = Newtonsoft.Json.JsonConvert.DeserializeObject<ML.Cocktail>(resultItem.ToString());
 

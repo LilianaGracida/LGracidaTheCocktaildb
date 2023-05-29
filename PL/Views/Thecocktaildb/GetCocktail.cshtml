@@ -36,18 +36,18 @@
         {
             <div class="col mt-3 pt-3">
                 <div class="card text-white bg-dark border-success mb-3 border-4 " style="width: 18rem;">
-                    @if ( cocktail== null || cocktail.Imagen == "")
+                    @if ( cocktail.strDrinkThumb== null || cocktail.strDrinkThumb == "")
                     {
                         <img src="~/Images/SIN-IMAGEN.png" class="card-img-top" height="50%" width="100%" />
                     }
                     else
                     {
-                        <img src="data:image/*;base64,@cocktail.Imagen" class="card-img-top" width="80%" height="50%" />
+                        <img src="data:image/*;base64,@cocktail.strDrinkThumb" class="card-img-top" width="80%" height="50%" />
                     }
 
                     <div class="card-body">
-                        <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail .Nombre</h5>
-                        <p class="card-text">Ingrediente:@cocktail.Ingrediente </p>
+                        <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail.strDrink</h5>
+                        <p class="card-text">Ingrediente:@cocktail.strIngredient1 </p>
                     </div>
                 </div>
             </div>
