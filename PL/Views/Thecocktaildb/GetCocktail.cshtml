@@ -5,53 +5,84 @@
 }
 
 <div class="container">
-    <div class="row">
-        <div class="=col-md-12">
-            <h2>The Cocktail</h2>
-        </div>
-    </div>
-    @using (Html.BeginForm("GetCocktail", "Thecocktaildb", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <div class="row">
-            <div class="form-group">
-                <div class="col-md-4">
-                    @Html.Label("Nombre Cocktail")
-                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre", @autocomplete = "off" })
-                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-md-4">
-                    @Html.Label("Ingrediente")
-                    @Html.TextBoxFor(model => model.Ingrediente, new { @class = "form-control", @id = "txtIngrediente", @autocomplete = "off" })
-                    @Html.ValidationMessageFor(model => model.Ingrediente, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="col-md-4">
+    <section>
+        <h2>Cocktail</h2>
 
-                <input type="submit" value="Buscar" class="btn btn-primary" />
-            </div>
-        </div>
-    }
-    <div class="row">
-        @foreach (ML.Cocktail cocktail in Model.Productos)
+    </section>
+
+    <hr />
+    <div class="container-fluid">
+
+
+        @using (Html.BeginForm("GetCocktail", "Thecocktaildb", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-            <div class="col mt-3 pt-3">
-                <div class="card text-white bg-dark border-success mb-3 border-4 " style="width: 18rem;">
-                    @if ( cocktail.strDrinkThumb== null || cocktail.strDrinkThumb == "")
-                    {
-                        <img src="~/Images/SIN-IMAGEN.png" class="card-img-top" height="50%" width="100%" />
-                    }
-                    else
-                    {
-                        <img src="data:image/*;base64,@cocktail.strDrinkThumb" class="card-img-top" width="80%" height="50%" />
-                    }
 
-                    <div class="card-body">
-                        <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail.strDrink</h5>
-                        <p class="card-text">Ingrediente:@cocktail.strIngredient1 </p>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.Label("Nombre Cocktail")
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.Label("Ingrediente")
+                        @Html.TextBoxFor(model => model.Ingrediente, new { @class = "form-control", @id = "txtIngrediente", @autocomplete = "off" })
+                        @Html.ValidationMessageFor(model => model.Ingrediente, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
-       }
-    </div>
 
-</div>
+            <div class="row">
+                <div class="col">
+                    <input type="submit" value="Buscar" class="btn btn-info" />
+
+                </div>
+
+            </div>
+
+        }
+
+    </div>
+   
+   <div class="row">
+       @foreach(ML.Cocktail cocktail in Model.drinks)
+       {
+           if (cocktail.strIngredient1 == null)
+           {
+       <div class="row">
+           <div class="col-sm-4">
+               <div class="card" style="width: 18rem;">
+                   <img class="card-img-top">
+                   <img src="@cocktail.strDrinkThumb" width="150px" height="150px" />
+                   <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail.strDrink</h5>
+               </div>
+           </div>
+       </div>
+           
+           }
+           else
+           {
+   <div class="row">
+       <div class="col-sm-4">
+           <div class="card text-white bg-dark border-success mb-3 border-4 " style="width: 18rem;">
+               <img class="card-img-top">
+               <img src="@cocktail.strDrinkThumb" width="150px" height="150px" />
+               <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail.strDrink</h5>
+               <div class="card-body">
+                   <ul class="list-group list-group-item-flush">
+                       <p class="card-text">Ingrediente:@cocktail.strIngredient1 </p>
+                       <p class="card-text">Ingrediente:@cocktail.strIngredient2 </p>
+                       <p class="card-text">Ingrediente:@cocktail.strIngredient3 </p>
+                       <p class="card-text">Ingrediente:@cocktail.strInstructions </p>
+
+                   </ul>
+               </div>
+           </div>
+       </div>
+   </div>
+         
+           }
+       }
+       </div>
+ </div>

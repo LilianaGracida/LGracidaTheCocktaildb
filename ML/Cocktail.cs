@@ -59,7 +59,7 @@ namespace ML
         public dynamic strImageAttribution { get; set; }
         public dynamic strCreativeCommonsConfirmed { get; set; }
         public dynamic dateModified { get; set; }
-
+        public List<Object> drinks { get; set; }
         public List<Object> Productos { get; set; }
     }
 }
