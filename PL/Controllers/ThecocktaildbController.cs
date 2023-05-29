@@ -12,7 +12,35 @@ namespace PL.Controllers
 
         public ActionResult GetCocktail()
         {
-            return View();
+            ML.Result resultLibro = new ML.Result();
+                resultLibro.Objects = new List<Object>();
+
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://www.thecocktaildb.com/api/json/");
+
+                    var responseTask = client.GetAsync("");
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+
+                    if (result.IsSuccessStatusCode)
+                    {
+
+                        var readTask = result.Content.ReadAsAsync<ML.Result>();
+                        readTask.Wait();
+
+                        foreach (var resultItem in readTask.Result.Objects)
+                        {
+                            ML.Cocktail resultItemList = Newtonsoft.Json.JsonConvert.DeserializeObject<ML.Cocktail>(resultItem.ToString());
+                            resultLibro.Objects.Add(resultItemList);
+                        }
+
+                    }
+                }
+                ML.Cocktail cocktail = new ML.Cocktail();
+                cocktail.Productos = resultLibro.Objects;
+                return View(cocktail);//Mandar a llamar a la vista, mostrar la vista(HTML)
         }
         [HttpPost]
         public ActionResult GetCocktail(ML.Cocktail cocktail)

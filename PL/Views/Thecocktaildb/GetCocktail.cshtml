@@ -32,11 +32,11 @@
         </div>
     }
     <div class="row">
-        @*@foreach (ML.Cocktail cocktail in Model.Productos)
+        @foreach (ML.Cocktail cocktail in Model.Productos)
         {
             <div class="col mt-3 pt-3">
                 <div class="card text-white bg-dark border-success mb-3 border-4 " style="width: 18rem;">
-                    @if (cocktail.Imagen == null || cocktail.Imagen == "")
+                    @if ( cocktail== null || cocktail.Imagen == "")
                     {
                         <img src="~/Images/SIN-IMAGEN.png" class="card-img-top" height="50%" width="100%" />
                     }
@@ -51,7 +51,7 @@
                     </div>
                 </div>
             </div>
-       }*@
+       }
     </div>
 
 </div>
