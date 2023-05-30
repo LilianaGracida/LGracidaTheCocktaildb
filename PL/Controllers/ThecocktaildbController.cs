@@ -34,8 +34,11 @@ namespace PL.Controllers
                     foreach (var resultItem in readTask.Result.drinks)
                     {
                         ML.Cocktail resultItemList = Newtonsoft.Json.JsonConvert.DeserializeObject<ML.Cocktail>(resultItem.ToString());
-
                         resultProducto.Objects.Add(resultItemList);
+                        resultItemList.img1 = "https://www.thecocktaildb.com/images/ingredients/" + resultItemList.strIngredient1 + "-Small.png";
+                        resultItemList.img2 = "https://www.thecocktaildb.com/images/ingredients/" + resultItemList.strIngredient2 + "-Small.png";
+                        resultItemList.img3 = "https://www.thecocktaildb.com/images/ingredients/" + resultItemList.strIngredient3 + "-Small.png";
+
                     }
 
                 }
@@ -72,7 +75,9 @@ namespace PL.Controllers
                         foreach (var resultItem in readTask.Result.drinks)
                         {
                             ML.Cocktail resultItemList = Newtonsoft.Json.JsonConvert.DeserializeObject<ML.Cocktail>(resultItem.ToString());
-
+                            resultItemList.img1 = "https://www.thecocktaildb.com/images/ingredients/" + resultItemList.strIngredient1 + "-Small.png";
+                            resultItemList.img2 = "https://www.thecocktaildb.com/images/ingredients/" + resultItemList.strIngredient2 + "-Small.png";
+                            resultItemList.img3 = "https://www.thecocktaildb.com/images/ingredients/" + resultItemList.strIngredient3 + "-Small.png";
                             resultProducto.Objects.Add(resultItemList);
                         }
 
@@ -99,7 +104,7 @@ namespace PL.Controllers
                         foreach (var resultItem in readTask.Result.drinks)
                         {
                             ML.Cocktail resultItemList = Newtonsoft.Json.JsonConvert.DeserializeObject<ML.Cocktail>(resultItem.ToString());
-
+                            
                             resultProducto.Objects.Add(resultItemList);
                         }
 

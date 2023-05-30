@@ -13,12 +13,9 @@
     <hr />
     <div class="container-fluid">
 
-
         @using (Html.BeginForm("GetCocktail", "Thecocktaildb", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
-
-
-            <div class="row">
+               <div class="row">
                 <div class="form-group">
                     <div class="col-md-4">
                         @Html.Label("Nombre Cocktail")
@@ -35,6 +32,7 @@
 
             <div class="row">
                 <div class="col">
+                    <br />
                     <input type="submit" value="Buscar" class="btn btn-info" />
 
                 </div>
@@ -42,47 +40,44 @@
             </div>
 
         }
-
+      <br />
     </div>
    
-   <div class="row">
        @foreach(ML.Cocktail cocktail in Model.drinks)
        {
            if (cocktail.strIngredient1 == null)
            {
-       <div class="row">
-           <div class="col-sm-4">
-               <div class="card" style="width: 18rem;">
-                   <img class="card-img-top">
-                   <img src="@cocktail.strDrinkThumb" width="150px" height="150px" />
-                   <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail.strDrink</h5>
-               </div>
-           </div>
-       </div>
-           
-           }
-           else
-           {
-   <div class="row">
-       <div class="col-sm-4">
-           <div class="card text-white bg-dark border-success mb-3 border-4 " style="width: 18rem;">
-               <img class="card-img-top">
-               <img src="@cocktail.strDrinkThumb" width="150px" height="150px" />
-               <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail.strDrink</h5>
-               <div class="card-body">
-                   <ul class="list-group list-group-item-flush">
-                       <p class="card-text">Ingrediente:@cocktail.strIngredient1 </p>
-                       <p class="card-text">Ingrediente:@cocktail.strIngredient2 </p>
-                       <p class="card-text">Ingrediente:@cocktail.strIngredient3 </p>
-                       <p class="card-text">Ingrediente:@cocktail.strInstructions </p>
+<div class="row">
+    <div class="form-group">
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top">
+                <img src="@cocktail.strDrinkThumb" width="150px" height="150px" />
+                <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail.strDrink</h5>
+            </div>
+        </div>
+    </div>
+</div>
+    }
+    else
+    {
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card text-white bg-dark border-success mb-3 border-4 " style="width: 18rem;">
+                <img src="@cocktail.strDrinkThumb" width="150px" height="150px" />
+                <h5 class="card-title card-header text-center bg-secondary">Nombre: @cocktail.strDrink</h5>
+                <div class="card-body">
+                    <p class="card-title card-header text-center bg-secondary">Ingredientes:
+                     @cocktail.strIngredient1  <img src="@cocktail.img1" width="20px" height="20px">
+                     @cocktail.strIngredient2  <img src="@cocktail.img2" width="20px" height="20px">
+                     @cocktail.strIngredient3  <img src="@cocktail.img3" width="20px" height="20px">
+                     Instrucciones: @cocktail.strInstructions </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+    <br>
+    }
+</div>
 
-                   </ul>
-               </div>
-           </div>
-       </div>
-   </div>
-         
-           }
-       }
-       </div>
- </div>

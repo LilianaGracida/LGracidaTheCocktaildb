@@ -60,6 +60,8 @@ namespace ML
         public dynamic strCreativeCommonsConfirmed { get; set; }
         public dynamic dateModified { get; set; }
         public List<Object> drinks { get; set; }
-        public List<Object> Productos { get; set; }
+        public string img1 { get; set; }
+        public string img2 { get; set; }
+        public string img3 { get; set; }
     }
 }
